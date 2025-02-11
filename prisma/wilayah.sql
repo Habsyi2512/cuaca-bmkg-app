@@ -26,18 +26,6 @@ copyright (c) 2016-2024 by cahya dsn; cahyadsn@gmail.com
 -- Table structure for table wilayah
 --
 
-DROP TABLE IF EXISTS wilayah;
-CREATE TABLE IF NOT EXISTS wilayah (
-    kode varchar(13) NOT NULL,
-    nama varchar(100) DEFAULT NULL,
-    PRIMARY KEY (kode)
-);
-CREATE INDEX wilayah_name_idx ON wilayah (nama);
-
---
--- Dumping data for table wilayah
---
-
 -- Provinsi ACEH
 INSERT INTO wilayah (kode, nama)
 VALUES

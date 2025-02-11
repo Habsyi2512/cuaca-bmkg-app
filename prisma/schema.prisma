@@ -12,3 +12,12 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Wilayah {
+
+  kode String  @id @db.VarChar(13)
+  nama String? @db.VarChar(100)
+
+  @@index([nama], name: "wilayah_name_idx")
+  @@map("wilayah")
+}
