@@ -1,9 +1,9 @@
-import GetData from "@/components/GetData";
+import Container from "@/components/Container";
 
 export default function Home() {
   return (
-    <div>
-      <GetData />
-    </div>
+    <Container>
+      <p>Halaman Utama</p>
+    </Container>
   );
 }
