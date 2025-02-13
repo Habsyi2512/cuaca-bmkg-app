@@ -9,15 +9,15 @@ interface Wilayah {
 }
 
 export default function PrakiraanCuacaGeneralPage() {
-  const [query, setQuery] = useState<string>(""); // State untuk input
-  const [suggestions, setSuggestions] = useState<Wilayah[]>([]); // State untuk menyimpan hasil pencarian
+  const [query, setQuery] = useState<string>(""); 
+  const [suggestions, setSuggestions] = useState<Wilayah[]>([]); 
   const [loading, setLoading] = useState<boolean>(false);
-  const isSuggestionClicked = useRef<boolean>(false); // Gunakan useRef untuk mencegah fetch setelah klik
+  const isSuggestionClicked = useRef<boolean>(false); 
 
   useEffect(() => {
     if (query.length < 3 || isSuggestionClicked.current) {
-      setSuggestions([]); // Kosongkan suggestion jika input kurang dari 3 karakter atau suggestion diklik
-      isSuggestionClicked.current = false; // Reset state setelah suggestions dihapus
+      setSuggestions([]);
+      isSuggestionClicked.current = false; 
       return;
     }
 
@@ -26,14 +26,14 @@ export default function PrakiraanCuacaGeneralPage() {
       try {
         const response = await fetch(`/api/search/search-by-name?q=${query}`);
         const result = await response.json();
-        setSuggestions(result.data || []); // Simpan hasil pencarian, jika kosong set []
+        setSuggestions(result.data || []);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
       setLoading(false);
     };
 
-    const delayFetch = setTimeout(fetchSuggestions, 500); // Delay untuk menghindari request berlebihan
+    const delayFetch = setTimeout(fetchSuggestions, 500); 
     return () => clearTimeout(delayFetch);
   }, [query]);
 
